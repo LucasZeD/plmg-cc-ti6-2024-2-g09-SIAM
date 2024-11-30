@@ -60,10 +60,10 @@ The model was trained and optimized with CUDA for high performance and is hosted
 1. Follow the instructions in the folder Codigo/API to create the API server instance.
    
 2. Update the BaseAddress in the class ApiService located at Codigo/PlaneDetectionv3/Services/ with the server address:
-  ```csharp
-  BaseAddress = new Uri("http<s?>://<address>:<port>");
-  ```
-  Replace <address> and <port> with the corresponding address and port of your server.
+   Replace <address> and <port> with the corresponding address and port of your server.
+   ```csharp
+   BaseAddress = new Uri("http<s?>://<address>:<port>");
+   ```
   
 3. Compile and run the desktop application following the instructions provided in readme.md.
    
