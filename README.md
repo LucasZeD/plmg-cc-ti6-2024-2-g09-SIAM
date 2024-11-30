@@ -22,13 +22,13 @@ O modelo foi treinado e otimizado com CUDA, garantindo alto desempenho, e está 
 
 1. Siga as instruções na pasta Codigo/API para criar a instância do servidor da API.
 2. Altere o BaseAddress na classe ApiService, localizada em Codigo/PlaneDetectionv3/Services/, com o endereço do servidor:
-  ```csharp
-  BaseAddress = new Uri("http<s?>://<address>:<port>");
-  ```
-  Substitua <endereco> e <porta> pelo endereço e porta correspondentes ao seu servidor.
-3. Compile e execute o aplicativo desktop seguindo as instruções fornecidas em readme.md.
-4. Utilize as imagens de aviões disponíveis na pasta Codigo/TestingPlanes para testar o funcionamento do aplicativo.
-  Alternativamente, você pode realizar testes com fotos de aviões de outras fontes.
+```csharp
+BaseAddress = new Uri("http<s?>://<address>:<port>");
+```
+   Substitua <endereco> e <porta> pelo endereço e porta correspondentes ao seu servidor.
+4. Compile e execute o aplicativo desktop seguindo as instruções fornecidas em readme.md.
+5. Utilize as imagens de aviões disponíveis na pasta Codigo/TestingPlanes para testar o funcionamento do aplicativo.
+   Alternativamente, você pode realizar testes com fotos de aviões de outras fontes.
 
 ---
 
