@@ -14,12 +14,17 @@ authors:
     given-names: Lucas
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Cota de Freitas
+    given-names: Henrique
   - name-suffix: Professor
     affiliation: PUC Minas
-    family-names: 
-    given-names: 
+    family-names: Manso Correa Machado
+    given-names: Alexei
+  - name-suffix: Professor
+    affiliation: PUC Minas
+    family-names: de Lima Procopio Duarte 
+    given-names: Fatima
+
 keywords:
   - Detecção Aviões Militares
   - Aplicativo Desktop
