@@ -1,0 +1,29 @@
+# .NET build directories
+bin/
+obj/
+
+# User-specific files
+.vs/
+.vscode/
+
+# NuGet packages
+packages/
+
+# User settings (Visual Studio specific)
+.idea/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+
+# Configuration files (optional)
+#appsettings.json
+#app.config
+
+# Log and temp files
+*.log
+*.tmp
+*.bak
+
+# Published files
+bin/Release/

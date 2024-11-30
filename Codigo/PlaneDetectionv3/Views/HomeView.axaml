@@ -1,0 +1,83 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PlaneDetectionv2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PlaneDetectionv2.Views.HomeView"
+             x:DataType="viewModels:HomeViewModel">
+    <StackPanel Margin="20">
+        <Image Source="/Assets/imgs/wallpaper_plane.jpg"
+               Stretch="UniformToFill"
+               Height="200"/>
+        
+        <TextBlock Text="Ultimas predições:" FontSize="24" Margin="0,17,0,5" />
+        
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Disabled"
+                      Margin="0,15,0,10">
+            <ItemsControl ItemsSource="{Binding RecentPredictions}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Background="LightGray"
+                                    CornerRadius="8"
+                                    Margin="10,5,10,5"
+                                    Padding="10"
+                                    HorizontalAlignment="Center">
+                                <StackPanel Width="150">
+                                    <!-- <Image Source="{Binding ImagePath}" Width="100" Height="100"/> -->
+                                    <TextBlock Text="{Binding Label}" Margin="10,0,0,0" Foreground="Black"/>
+                                    <TextBlock Text="{Binding Confidence, StringFormat={}{0:P2}}" Margin="10,0,0,0" Foreground="Black"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+        </ScrollViewer>
+        
+        <!-- <StackPanel Orientationn="Horizontal" Spacing="10" VerticalAlignment="Top" Margin="0,15,0,0"> -->
+        <!--     <TextBox Width="300" Text="{Binding BaseUrl, UpdateSourceTrigger=PropertyChanged}"  -->
+        <!--              Watermark="Digite a URL base aqui..." /> -->
+        <!--     <Button Content="Alterar URL" Command="{Binding ChangeBaseUrlCommand}" /> -->
+        <!-- </StackPanel> -->
+
+        <!-- Available Models Section -->
+        <TextBlock Text="Modelos Disponíveis:" FontSize="24" Margin="0,17,0,5" />
+        
+        <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Disabled"
+                      Margin="0,15,0,10">
+            <ItemsControl ItemsSource="{Binding AvailableModels}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="LightGray"
+                                CornerRadius="8"
+                                Margin="10,5,10,5"
+                                Padding="10"
+                                HorizontalAlignment="Center">
+                            <StackPanel Width="150" HorizontalAlignment="Center">
+                                <TextBlock Text="{Binding}" FontSize="16" HorizontalAlignment="Center" Foreground="Black"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,17,0,0">
+            <Ellipse Width="10" Height="10" Fill="{Binding ApiStatusColor}" Margin="0,0,10,0"/>
+            <TextBlock Text="{Binding ApiStatusText}" VerticalAlignment="Center"/>
+        </StackPanel>
+        
+    </StackPanel>
+</UserControl>

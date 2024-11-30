@@ -1,0 +1,99 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels1="clr-namespace:PlaneDetectionv2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PlaneDetectionv2.Views.HistoryView"
+             x:DataType="viewModels1:HistoryViewModel">
+    
+     <ScrollViewer>
+        <StackPanel Margin="20" Spacing="20">
+            <!-- Title -->
+            <TextBlock Text="Histórico" FontSize="24" Margin="0,0,0,20" />
+            
+            <ItemsControl ItemsSource="{Binding Predictions}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Gray"
+                                BorderThickness="1"
+                                Margin="0,0,0,20"
+                                Padding="10">
+                            <StackPanel>
+                                <!-- Directly bind to ImageSource without a converter if it's a Bitmap -->
+                                <Canvas Width="500" Height="300">
+                                    <Image Source="{Binding ImageSource}"
+                                           Stretch="UniformToFill"
+                                           Width="500"
+                                           Height="300"
+                                           x:Name="ImageCanvas"/>
+                                    
+                                    <!-- <ItemsControl ItemsSource="{Binding BoundingBoxes}"> -->
+                                    <!--     <ItemsControl.ItemTemplate> -->
+                                    <!--         <DataTemplate> -->
+                                    <!--             <Border BorderBrush="Red" BorderThickness="2" -->
+                                    <!--                     Canvas.Left="{Binding XMin}" Canvas.Top="{Binding YMin}"  -->
+                                    <!--                     Width="{Binding Width}" Height="{Binding Height}" /> -->
+                                    <!--         </DataTemplate> -->
+                                    <!--     </ItemsControl.ItemTemplate> -->
+                                    <!-- </ItemsControl> -->
+                                    <ItemsControl ItemsSource="{Binding BoundingBoxes}">
+                                        <ItemsControl.ItemsPanel>
+                                            <ItemsPanelTemplate>
+                                                <Canvas Width="500" Height="300"/>
+                                            </ItemsPanelTemplate>
+                                        </ItemsControl.ItemsPanel>
+                                        <ItemsControl.ItemTemplate>
+                                            <!-- <DataTemplate> -->
+                                            <!--     <Border BorderBrush="Red" BorderThickness="2" -->
+                                            <!--             Canvas.Left="{Binding ScaledXMin}" -->
+                                            <!--             Canvas.Top="{Binding ScaledYMin}" -->
+                                            <!--             Width="{Binding ScaledWidth}" -->
+                                            <!--             Height="{Binding ScaledHeight}"> -->
+                                            <!--     </Border> -->
+                                            <!-- </DataTemplate> -->
+                                            <DataTemplate>
+                                                <Border BorderBrush="Red" BorderThickness="2"
+                                                        Width="{Binding ScaledWidthH}"
+                                                        Height="{Binding ScaledHeightH}">
+                                                    <Border.RenderTransform>
+                                                        <TranslateTransform X="{Binding ScaledXMinH}" Y="{Binding ScaledYMinH}" />
+                                                    </Border.RenderTransform>
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Label}" FontSize="12" Foreground="White"/>
+                                                        <TextBlock Text="{Binding Confidence, StringFormat={}{0:P2}}" FontSize="12" Foreground="White"/>
+                                                    </StackPanel>
+                                                </Border>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Canvas>
+
+                                <!-- Display Prediction Details -->
+                                <TextBlock Text="Modelo:" FontWeight="Bold" Margin="0,10,0,5" />
+                                <TextBlock Text="{Binding Label}" />
+                                <TextBlock Text="Grau de confiança:" FontWeight="Bold" Margin="0,10,0,5" />
+                                <TextBlock Text="{Binding Confidence}" />
+
+                                <!-- Display JSON Data -->
+                                <!-- <TextBlock Text="Prediction Data:" FontWeight="Bold" Margin="0,10,0,5" /> -->
+                                <!-- <TextBlock Text="{Binding FormattedPredictionData}" TextWrapping="Wrap" /> -->
+
+                                <!-- Display Timestamp -->
+                                <TextBlock Text="Timestamp:" FontWeight="Bold" Margin="0,10,0,5" />
+                                <TextBlock Text="{Binding Timestamp}" />
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+            
+            <!-- Clear Database Button -->
+            <Button Content="Limpar histórico"
+                    Command="{Binding ClearDatabaseCommand}"
+                    Margin="0,0,0,20"
+                    HorizontalAlignment="Right"
+                    Foreground="DarkRed"/>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

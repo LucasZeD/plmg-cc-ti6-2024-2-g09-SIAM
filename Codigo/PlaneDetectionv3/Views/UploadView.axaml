@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PlaneDetectionv2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PlaneDetectionv2.Views.UploadView"
+             x:DataType="viewModels:UploadViewModel">
+    <StackPanel Margin="20">
+        <TextBlock Text="Upload de Imagem" FontSize="20" Margin="0,0,0,20"/>
+        
+        <Border x:Name="DropBorder"
+                BorderThickness="2"
+                Height="200"
+                Margin="0,0,0,10"
+                Background="{Binding IsDragging, Converter={StaticResource DragHighlightConverter}}">
+            <Grid>
+                <!-- Image Preview -->
+                <Image Source="{Binding SelectedImageBitmap}" Stretch="Uniform" IsVisible="{Binding IsImageSelected}" />
+                <!-- Placeholder Text -->
+                <TextBlock Text="Escolha Uma Imagem." HorizontalAlignment="Center" VerticalAlignment="Center"
+                           IsVisible="{Binding IsImageSelected, Converter={StaticResource InverseBooleanConverter}}"/>
+            </Grid>
+        </Border>
+        
+        <Button Command="{Binding SelectImageCommand}" Content="Escolher Imagem." Margin="0,0,0,10" HorizontalAlignment="Right"/>
+        <Button Command="{Binding PredictImageCommand}" Content="Enviar" HorizontalAlignment="Right"/>
+        
+        <ComboBox PlaceholderText="Selecione um modelo." ItemsSource="{Binding AvailableModels}" SelectedItem="{Binding SelectedModel}" Margin="0,0,0,10"/>
+        
+        <TextBlock Text="{Binding ErrorMessageText}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"
+                   IsVisible="{Binding ErrorMessageText, Converter={StaticResource StringNotEmptyToVisibleConverter}}"/>
+    </StackPanel>
+</UserControl>

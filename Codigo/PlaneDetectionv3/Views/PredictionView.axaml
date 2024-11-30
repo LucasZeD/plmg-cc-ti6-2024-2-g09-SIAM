@@ -1,0 +1,49 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:PlaneDetectionv2.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PlaneDetectionv2.Views.PredictionView"
+             x:DataType="viewModels:PredictionViewModel">
+    
+    <ScrollViewer>
+        <StackPanel Margin="20">
+            <TextBlock Text="Prediction Details" FontSize="20" Margin="0,0,0,20"/>
+            <!-- <TextBlock Text="{Binding Label}" FontSize="12" Foreground="White"/> -->
+            <!-- <TextBlock Text="{Binding Confidence, StringFormat={}{0:P2}}" FontSize="12" Foreground="White"/> -->
+            
+            <Canvas Width="500" Height="300">
+                <Image Source="{Binding ImageBitmap}"
+                       Stretch="UniformToFill"
+                       Height="300"
+                       Width="500"
+                       Canvas.Left="0" Canvas.Top="0"
+                       x:Name="ImageCanvas"/>
+                
+                <ItemsControl ItemsSource="{Binding BoundingBoxes}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <Canvas Width="500" Height="300"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="Red" BorderThickness="2"
+                                    Width="{Binding ScaledWidth}"
+                                    Height="{Binding ScaledHeight}">
+                                <Border.RenderTransform>
+                                    <TranslateTransform X="{Binding ScaledXMin}" Y="{Binding ScaledYMin}" />
+                                </Border.RenderTransform>
+                                <StackPanel>
+                                    <TextBlock Text="{Binding Label}" FontSize="12" Foreground="White"/>
+                                    <TextBlock Text="{Binding Confidence, StringFormat={}{0:P2}}" FontSize="12" Foreground="White"/>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Canvas>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

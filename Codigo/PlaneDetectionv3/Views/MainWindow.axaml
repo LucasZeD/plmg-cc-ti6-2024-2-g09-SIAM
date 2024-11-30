@@ -1,0 +1,110 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:PlaneDetectionv2.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+        x:Class="PlaneDetectionv2.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Title="SIAM"
+        Icon="/Assets/airplane.ico"
+        Width="960"
+        Height="540">
+    <Window.Styles>
+        <StyleInclude Source="avares://PlaneDetectionv2/Assets/Icons.axaml"/>
+    </Window.Styles>
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <SplitView IsPaneOpen="True"
+                OpenPaneLength="124"
+                CompactPaneLength="0"
+                DisplayMode="Inline"
+                Background="#1e1e1e"
+                PaneBackground="#1e1e1e">
+        <SplitView.Pane>
+            <StackPanel Spacing="10">
+                <!-- Home -->
+                <Button Command="{Binding NavigateCommand}"
+                        CommandParameter="HomeView"
+                        Margin="12, 10,0, 10"
+                        Width="100">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,2,0,0">
+                        <PathIcon Data="{DynamicResource HomeRegular}"/>
+                        <TextBlock Text="Home" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+                <!-- History -->
+                <Button Command="{Binding NavigateCommand}"
+                        CommandParameter="HistoryView"
+                        Margin="12, 0, 0, 10"
+                        Width="100">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,2,0,0">
+                        <PathIcon Data="{DynamicResource HistoryRegular}"/>
+                        <TextBlock Text="History" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+                <!-- Upload -->
+                <Button Command="{Binding NavigateCommand}"
+                        CommandParameter="UploadView"
+                        Margin="12, 0, 0, 10"
+                        Width="100">
+                    <StackPanel Orientation="Horizontal"
+                                Margin="0,2,0,0">
+                        <PathIcon Data="{DynamicResource ArrowUploadRegular}"/>
+                        <TextBlock Text="Upload" Margin="5,0,0,0"/>
+                    </StackPanel>
+                </Button>
+                <!-- <Button Command="{Binding NavigateCommand}" CommandParameter="HomeView" Content="Home"/> -->
+                <!-- <Button Command="{Binding NavigateCommand}" CommandParameter="HistoryView" Content="History"/> -->
+                <!-- <Button Command="{Binding NavigateCommand}" CommandParameter="UploadView" Content="Upload"/> -->
+            </StackPanel>
+            <!-- <StackPanel Spacing="10" Margin="10,20"> -->
+            <!--     ~1~ Home Button @1@ -->
+            <!--     <Button Command="{Binding NavigateCommand}" CommandParameter="HomeView" Background="Transparent" BorderBrush="Transparent" Height="50" HorizontalContentAlignment="Left"> -->
+            <!--         <Grid ColumnDefinitions="40,110" VerticalAlignment="Center"> -->
+            <!--             <Border Background="Green"> -->
+            <!--                 <Path Data="{StaticResource HomeRegular}" Fill="White" HorizontalAlignment="Center" VerticalAlignment="Center"/> -->
+            <!--             </Border> -->
+            <!--             <Border Grid.Column="1" Background="Blue"> -->
+            <!--                 <TextBlock Text="Home" Foreground="White" VerticalAlignment="Center" Margin="0,0,0,0" Grid.Column="1" FontSize="20" /> -->
+            <!--             </Border> -->
+            <!--         </Grid> -->
+            <!--     </Button> -->
+            <!--      -->
+            <!--     ~1~ History Button @1@ -->
+            <!--     <Button Command="{Binding NavigateCommand}" CommandParameter="HistoryView" Background="Transparent" BorderBrush="Transparent" Height="50" HorizontalContentAlignment="Left"> -->
+            <!--         <Grid ColumnDefinitions="40,110" VerticalAlignment="Center"> -->
+            <!--             <Border Background="Green"> -->
+            <!--                 <Path Data="{StaticResource HistoryRegular}" Fill="White" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" />     -->
+            <!--             </Border> -->
+            <!--             <Border Grid.Column="1" Background="Blue"> -->
+            <!--                 <TextBlock Text="History" Foreground="White" VerticalAlignment="Center" Margin="0,0,0,0" Grid.Column="1" FontSize="20" />     -->
+            <!--             </Border> -->
+            <!--         </Grid> -->
+            <!--     </Button> -->
+            <!--      -->
+            <!--     ~1~ Upload Button @1@ -->
+            <!--     <Button Command="{Binding NavigateCommand}" CommandParameter="UploadView" Background="Transparent" BorderBrush="Transparent" Height="50" HorizontalContentAlignment="Left"> -->
+            <!--         <Grid ColumnDefinitions="40,110" VerticalAlignment="Center"> -->
+            <!--             <Border Background="Green"> -->
+            <!--                 <Path Data="{StaticResource SettingsRegular}" Fill="White" Width="24" Height="24" HorizontalAlignment="Center" VerticalAlignment="Center" />     -->
+            <!--             </Border> -->
+            <!--             <Border Grid.Column="1" Background="Blue"> -->
+            <!--                 <TextBlock Text="Upload" Foreground="White" VerticalAlignment="Center" Margin="0,0,0,0" Grid.Column="1" FontSize="20" />     -->
+            <!--             </Border> -->
+            <!--         </Grid> -->
+            <!--     </Button> -->
+            <!-- </StackPanel> -->
+        </SplitView.Pane>
+        
+        <SplitView.Content>
+            <Border CornerRadius="12,0,0,0 " Background="#2d2d2d">
+                <ContentControl Content="{Binding CurrentView}"/>
+            </Border>
+        </SplitView.Content>
+    </SplitView>
+</Window>
