@@ -1,0 +1,1 @@
+<#_of_planes_on_img>_<plane_model>.jpg

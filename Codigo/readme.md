@@ -74,4 +74,4 @@ dotnet run
 ```
 
 ## Testing
-Upload images of military aircraft from Codigo/TestingPlanes or use other sources.
+Upload images of military aircraft from `Codigo/TestingPlanes` or use other sources.
