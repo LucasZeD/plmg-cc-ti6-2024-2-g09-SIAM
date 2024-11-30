@@ -1,19 +1,17 @@
 cff-version: 1.0.1
 message: Please cite this software using these metadata.
-title: 
+title: SIAM - Sistema de Identificação de Aviões Militares.
 authors:
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names: 
-  - family-names: 
-    given-names:
+  - family-names: Henrique da Silva Brum
+    given-names: Bruno
+  - family-names: David Costa Vieira
+    given-names: Christian
+  - family-names: Lucas Murta
+    given-names: Daniel
+  - family-names: Luna dos Anjos
+    given-names: Gabriel
+  - family-names: Zegrine Duarte
+    given-names: Lucas
   - name-suffix: Professor
     affiliation: PUC Minas
     family-names: 
@@ -23,9 +21,11 @@ authors:
     family-names: 
     given-names: 
 keywords:
-  - 
-  - 
-repository-code: 
+  - Detecção Aviões Militares
+  - Aplicativo Desktop
+  - Python API
+  - YoLov8 Custom Model
+repository-code: https://github.com/LucasZeD/plmg-cc-ti6-2024-2-g09-SIAM
 license: CC-BY-4.0
 version: 1.0.0
-date-released: 2022-07-14
+date-released: 2024-11-29
