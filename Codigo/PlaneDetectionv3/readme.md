@@ -56,7 +56,7 @@ dotnet run
 
 ## Testing
 
-You can test the application by uploading images of military aircraft. For testing purposes, you can use the images located in Codigo/TestingPlanes. Alternatively, you can test the system with aircraft images from other sources.
+You can test the application by uploading images of military aircraft. For testing purposes, you can use the images located in `Codigo/TestingPlanes`. Alternatively, you can test the system with aircraft images from other sources.
 
 ## License
 This project is licensed under the Creative Commons License - see the LICENSE.md file for details.

@@ -1,7 +1,7 @@
 # API
 
 Quick instructions for API server instantiation.
-For more information go to ./APIv3/readme.md/
+For more information go to `./APIv3/readme.md/`
 
 ## Overview
 
@@ -51,3 +51,27 @@ You can run the API locally with or without Docker.
 ---
 
 # Desktop APP
+
+## Setup
+
+1. **API Server Configuration**:  
+  - Navigate to `Codigo/PlaneDetectionv3/Services/`.
+
+  - Modify `BaseAddress` in `ApiService` class with the correct server address and port.
+  ```csharp
+  BaseAddress = new Uri("http<s?>://<address>:<port>");
+  ```
+
+2. **Restore Packages**:
+```bash
+dotnet restore
+```
+
+3. **Build and Run**
+```bash
+dotnet build
+dotnet run
+```
+
+## Testing
+Upload images of military aircraft from Codigo/TestingPlanes or use other sources.
